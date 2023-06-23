@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import './assets/paleta-cores.scss';
+
+body {
+  background: $gray-900;
+  color: $gray-300;
+}
+
+
+
+a {
+  color: $green-500 ;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $green-400 !important;
+}
+
+input {
+  background: $gray-700 ;
+}
+
+.btn-primary {
+  background: $green-500 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none !important;
+  color: $gray-200;
+}
+
+.btn-primary:hover {
+  background: $green-400 !important;
+  color: $gray-200;
+}
+
+.auth-input {
+  width: 100%;
+  color: $gray-300;
+  font-size: 1.0rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  height: 54px;
+  min-width: 267px;
+  border-radius: 0.1rem;
+  border: none;
+
+}
+
+.text-danger {
+  font-size: 0.8rem !important;
+  color: #cd4d4d !important;
+  padding-left: 2px;
+  margin-top: 3px;
+  display: block;
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+
+
+.form-group {
+  height: 74px;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
