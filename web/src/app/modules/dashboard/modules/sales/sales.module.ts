@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SalesRoutingModule } from './sales-routing.module';
 import { SalesComponent } from './sales.component';
+import { FormsModule } from '@angular/forms';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { SalesComponent } from './sales.component';
   ],
   imports: [
     CommonModule,
-    SalesRoutingModule
+    SalesRoutingModule,
+    FormsModule, NgbTypeaheadModule
   ]
 })
 export class SalesModule { }

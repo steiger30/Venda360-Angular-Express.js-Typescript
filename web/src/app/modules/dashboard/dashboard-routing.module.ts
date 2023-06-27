@@ -6,9 +6,19 @@ const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
       {
-        path: '',
+        path: 'venda',
         loadChildren: () =>
           import('./modules/sales/sales.module').then((m) => m.SalesModule)
+      },
+      {
+        path: 'produtos',
+        loadChildren: () =>
+          import('./modules/products/products.module').then((m) => m.ProductsModule)
+      },
+      {
+        path: 'clientes',
+        loadChildren: () =>
+          import('./modules/customer/customer.module').then((m) => m.CustomerModule)
       },
     ]
   },

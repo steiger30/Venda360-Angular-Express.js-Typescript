@@ -113,7 +113,7 @@
 
 .content {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 80px);
   padding: 10px;
   left: 250px;
   width: calc(100% - 250px);
@@ -124,7 +124,15 @@
   left: 88px;
   width: calc(100% - 88px);
 }
-.boder{
-  // border: 1px solid red !important;
-  height: 100%;
+
+
+.header {
+  // border: 1px solid red;
+  height: 70px;
+}
+
+.boder {
+  margin-top: 20px;
+  height: calc(100% - 10px);
+
 }

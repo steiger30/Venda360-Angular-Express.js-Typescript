@@ -3,7 +3,7 @@
     <h1 class="logo">logo</h1>
     <div class="d-flex flex-column gap-1 w-100">
       <div class="form-group mb-2">
-        <input class="auth-input" type="email" placeholder="Email" formControlName="email">
+        <input class="input" type="email" placeholder="Email" formControlName="email">
         <div *ngIf="form.get('email')?.errors && form.get('email')?.touched">
           <span class="text-danger" *ngIf="form.get('email')?.errors?.['required']">E-mail é obrigatório.</span>
           <span class="text-danger" *ngIf="form.get('email')?.errors?.['email']">O e-mail digitado não é válido.</span>
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="form-group mb-2">
-        <input class="auth-input" type="password" placeholder="Senha" formControlName="password">
+        <input class="input" type="password" placeholder="Senha" formControlName="password">
         <div *ngIf="form.get('password')?.errors && form.get('password')?.touched">
           <span class="text-danger" *ngIf="form.get('password')?.errors?.['required']">Senha é obrigatório.</span>
         </div>

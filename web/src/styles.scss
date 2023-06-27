@@ -20,7 +20,8 @@ a:hover {
   color: $green-400 !important;
 }
 
-input {
+input,
+textarea {
   background: $gray-700 ;
 }
 
@@ -37,7 +38,7 @@ input {
   color: $gray-200;
 }
 
-.auth-input {
+.input {
   width: 100%;
   color: $gray-300;
   font-size: 1.0rem;
@@ -117,4 +118,63 @@ input {
   100% {
     opacity: 1;
   }
+}
+
+
+.table {
+
+  th,
+  td {
+    background: $gray-900 !important;
+    color: $gray-200;
+  }
+}
+
+.mr-btn {
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+  background: #29292e;
+  color: #c4c4cc !important;
+}
+
+.dropdown-item {
+  color: $gray-200;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: $gray-200;
+  text-decoration: none;
+  background-color: $green-500 ;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  /* Largura do scroll */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #666464;
+  /* Cor do fundo do scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Cor da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  /* Cor da barra de rolagem ao passar o mouse */
 }

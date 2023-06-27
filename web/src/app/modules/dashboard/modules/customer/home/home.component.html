@@ -1,0 +1,26 @@
+<div class="py-4">
+  <button routerLink="novo-cliente" type="button" class="btn btn-primary">Novo</button>
+</div>
+<table class="table">
+  <thead class="">
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">E-mail</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody class="bg-table">
+    <tr *ngFor="let customer of customers">
+      <th scope="row">{{ customer.id }}</th>
+      <td>{{ customer.nome }}</td>
+      <td>{{ customer.cpf }}</td>
+      <td>{{ customer.email }}</td>
+      <td>
+        <button type="button" (click)="goToDetalhesByState(customer)" class="btn btn-secondary mr-btn">Editar</button>
+        <button type="button" (click)="deleteProduct(customer)" class="btn btn-danger">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

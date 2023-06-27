@@ -1,0 +1,10 @@
+@import '../../../../assets/paleta-cores.scss';
+.bg{
+  background: $gray-700;
+}
+.modal-header{
+  border-bottom:  1px solid #ffffff09;
+}
+.modal-footer{
+  border: none !important;
+}

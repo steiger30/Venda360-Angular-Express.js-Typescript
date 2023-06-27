@@ -11,15 +11,36 @@
       <div class="menu">
         <ul class="">
           <li class="nav-link">
-            <a href="#">
+            <a routerLink="/dashboard-admin">
               <fa-icon class="icon" [icon]="house"></fa-icon>
-              <span class="text nav-text">Dashboard</span>
+              <span class="text nav-text">Home</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a routerLink="produtos">
+              <fa-icon class="icon" [icon]="product"></fa-icon>
+              <span class="text nav-text">Produtos</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a routerLink="clientes">
+              <fa-icon class="icon" [icon]="cliente"></fa-icon>
+              <span class="text nav-text">Clientes</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a routerLink="venda">
+              <fa-icon class="icon" [icon]="dollar"></fa-icon>
+              <span class="text nav-text">Venda</span>
             </a>
           </li>
         </ul>
       </div>
     </div>
   </div>
+  <header class="header">
+    <div class="nav"></div>
+  </header>
   <div class="content">
     <div class="boder container-xl">
       <ng-component></ng-component>

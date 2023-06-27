@@ -1,0 +1,63 @@
+<form [formGroup]="form" class="form">
+  <div class="form-group">
+    <label>Nome</label>
+    <input type="text" class="input" formControlName="nome">
+    <div *ngIf="form.get('nome')?.errors && form.get('nome')?.touched">
+      <span class="text-danger" *ngIf="form.get('nome')?.errors?.['required']">Nome é
+        obrigatório.</span>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label>CPF</label>
+      <input type="text" class="input" formControlName="cpf">
+      <div *ngIf="form.get('cpf')?.errors && form.get('cpf')?.touched">
+        <span class="text-danger" *ngIf="form.get('cpf')?.errors?.['required']">CPF é
+          obrigatório.</span>
+
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Data Nascimento</label>
+      <input type="text" class="input" formControlName="dataNascimento">
+      <div *ngIf="form.get('dataNascimento')?.errors && form.get('dataNascimento')?.touched">
+        <span class="text-danger">Data nasicmento
+          obrigatório.</span>
+
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Endereço</label>
+    <input type="text" class="input" formControlName="endereco">
+    <div *ngIf="form.get('endereco')?.errors && form.get('endereco')?.touched">
+      <span class="text-danger" *ngIf="form.get('endereco')?.errors?.['required']">Endereço
+        obrigatório.</span>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label>E-mail</label>
+      <input type="text" class="input" formControlName="email">
+      <div *ngIf="form.get('email')?.errors && form.get('email')?.touched">
+        <span class="text-danger" *ngIf="form.get('email')?.errors?.['required']">E-mail é
+          obrigatório.</span>
+
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Telefone</label>
+      <input type="text" class="input" formControlName="telefone">
+      <div *ngIf="form.get('telefone')?.errors && form.get('telefone')?.touched">
+        <span class="text-danger">telefone é
+          obrigatório.</span>
+
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary mr-btn">Salvar</button>
+  <button routerLink="/dashboard-admin/clientes" type="button" class="btn btn-secondary">Voltar</button>
+</form>
