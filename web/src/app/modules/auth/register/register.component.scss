@@ -1,0 +1,26 @@
+@import '../../../../assets/utils.scss';
+@import '../../../../assets/paleta-cores.scss';
+
+.bg {
+  height: 100vh;
+  @include flexbox(row, center, center);
+  gap: 20px;
+  background: var(--gray-900);
+}
+
+.login-container {
+  gap: 20px;
+}
+
+.logo {
+  text-align: center;
+}
+
+p,
+a {
+  font-size: 0.9rem;
+}
+a {
+  font-weight: 700;
+}
+

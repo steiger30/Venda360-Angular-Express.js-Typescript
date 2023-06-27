@@ -1,1 +1,180 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import './assets/paleta-cores.scss';
+
+body {
+  background: $gray-900;
+  color: $gray-300;
+}
+
+
+
+a {
+  color: $green-500 ;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $green-400 !important;
+}
+
+input,
+textarea {
+  background: $gray-700 ;
+}
+
+.btn-primary {
+  background: $green-500 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none !important;
+  color: $gray-200;
+}
+
+.btn-primary:hover {
+  background: $green-400 !important;
+  color: $gray-200;
+}
+
+.input {
+  width: 100%;
+  color: $gray-300;
+  font-size: 1.0rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  height: 54px;
+  min-width: 267px;
+  border-radius: 0.1rem;
+  border: none;
+
+}
+
+.text-danger {
+  font-size: 0.8rem !important;
+  color: #cd4d4d !important;
+  padding-left: 2px;
+  margin-top: 3px;
+  display: block;
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+
+
+.form-group {
+  height: 74px;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.table {
+
+  th,
+  td {
+    background: $gray-900 !important;
+    color: $gray-200;
+  }
+}
+
+.mr-btn {
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+  background: #29292e;
+  color: #c4c4cc !important;
+}
+
+.dropdown-item {
+  color: $gray-200;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: $gray-200;
+  text-decoration: none;
+  background-color: $green-500 ;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  /* Largura do scroll */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #666464;
+  /* Cor do fundo do scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Cor da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  /* Cor da barra de rolagem ao passar o mouse */
+}
