@@ -20,9 +20,6 @@ export class PrismaUserRepostiory {
       throw new Error('E-mail já existe');
     }
   }
-  async delete(user: UserProperties): Promise<any> {
-    return await prisma.users.delete({ where: { id: user.id } })
-  }
 
   async isValidLogin(user: AuthUserProperties) {
     const isValidUser = await prisma.users.findUnique({ where: { email: user.email } })
@@ -34,5 +31,13 @@ export class PrismaUserRepostiory {
       throw new Error('Senha inválida');
     }
     return isValidUser
+  }
+
+  async delete(id: number) {
+
+    await prisma.users.delete({
+      where: { id }
+    })
+    return { message: "Removido com sucesso" }
   }
 } 

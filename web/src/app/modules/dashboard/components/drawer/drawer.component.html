@@ -11,7 +11,7 @@
       <div class="menu">
         <ul class="">
           <li class="nav-link">
-            <a routerLink="/dashboard-admin">
+            <a routerLink="/dashboard">
               <fa-icon class="icon" [icon]="house"></fa-icon>
               <span class="text nav-text">Home</span>
             </a>
@@ -32,6 +32,18 @@
             <a routerLink="venda">
               <fa-icon class="icon" [icon]="dollar"></fa-icon>
               <span class="text nav-text">Venda</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a (click)="sair()">
+              <fa-icon class="icon" [icon]="sairConta"></fa-icon>
+              <span class="text nav-text">Sair</span>
+            </a>
+          </li>
+          <li class="nav-link" >
+            <a (click)="exluirConta()">
+              <fa-icon class="icon" [icon]="remover"></fa-icon>
+              <span class="text nav-text">Excluir conta</span>
             </a>
           </li>
         </ul>

@@ -4,7 +4,6 @@ export type CustomerProperties = {
   id?: number,
   nome: string,
   cpf: string,
-  dataNascimento: Date,
   endereco: string,
   email: string,
   telefone: string,
@@ -19,7 +18,7 @@ export class Customer {
   }
 
   private validateProperties(props: CustomerProperties) {
-    const { nome, cpf, dataNascimento, endereco, email, telefone } = props;
+    const { nome, cpf, endereco, email, telefone } = props;
 
     ValidatorRules.values(nome, "nome")
       .required()
@@ -28,11 +27,6 @@ export class Customer {
     ValidatorRules.values(cpf, "cpf")
       .required()
       .cpf();
-
-    ValidatorRules.values(dataNascimento, "dataNascimento")
-      .required()
-      .string();
-
     ValidatorRules.values(endereco, "endereco")
       .required()
       .string();

@@ -1,4 +1,5 @@
-<form [formGroup]="form" class="form">
+<form *ngIf="!cadastrado" [formGroup]="form" (submit)="submitForm()" class="form">
+  <div class="erro" *ngIf="error">{{error}}</div>
   <div class="row">
     <div class="form-group col-md-6">
       <label>Nome</label>
@@ -11,7 +12,8 @@
     </div>
     <div class="form-group col-md-6">
       <label>Preço</label>
-      <input type="text" class="input" placeholder="Digite o preço do produto" formControlName="preco">
+      <input type="text" class="input" placeholder="Digite o preço do produto" formControlName="preco"
+        mask="separator.2" suffix="R$">
       <div *ngIf="form.get('preco')?.errors && form.get('preco')?.touched">
         <span class="text-danger">Preço do produtoé
           obrigatório.</span>
@@ -25,5 +27,8 @@
   </div>
 
   <button type="submit" class="btn btn-primary mr-btn">Salvar</button>
-  <button routerLink="/dashboard-admin/produtos" type="button" class="btn btn-secondary">Voltar</button>
+  <button routerLink="/dashboard/produtos" type="button" class="btn btn-secondary">Voltar</button>
 </form>
+<div *ngIf="cadastrado">
+  <h1>{{messagemSucesso}}</h1>
+</div>

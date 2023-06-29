@@ -3,7 +3,7 @@ import ValidatorRules from "../shared/validators/validator-rules";
 export type ProductProperties = {
   id?: number,
   nomeProduto: string,
-  preco: number,
+  preco: string,
   descricao: string,
 }
 
@@ -24,7 +24,7 @@ export class Product {
 
     ValidatorRules.values(preco, "preco")
       .required()
-      .number();
+      .string();
 
     ValidatorRules.values(descricao, "descricao")
       .required()

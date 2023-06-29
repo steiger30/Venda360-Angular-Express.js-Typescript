@@ -3,12 +3,11 @@ import { prisma } from "../../prisma/cliente";
 
 export class PrismaCustomersRepository {
   async create(customer: CustomerProperties, userId: number) {
-    const { nome, cpf, dataNascimento, endereco, email, telefone } = customer
-
+    const { nome, cpf, endereco, email, telefone } = customer
     try {
       await prisma.customers.create({
         data: {
-          nome, cpf, dataNascimento, endereco, email, telefone, userId
+          nome, cpf, endereco, email, telefone, userId
         }
       })
       return { message: "Cliente cadastrado com sucesso" }
@@ -20,11 +19,12 @@ export class PrismaCustomersRepository {
   }
 
   async update(customer: CustomerProperties, userId: number) {
-    const { id, nome, cpf, dataNascimento, endereco, email, telefone } = customer
+    const { id, nome, cpf, endereco, email, telefone } = customer
+
     await prisma.customers.update({
       where: { id },
       data: {
-        nome, cpf, dataNascimento, endereco, email, telefone
+        nome, cpf, endereco, email, telefone
       }
     })
     return { message: "Atualizado com sucesso" }
@@ -35,5 +35,11 @@ export class PrismaCustomersRepository {
       where: { id }
     })
     return { message: "Removido com sucesso" }
+  }
+  async getall(userId: number) {
+    const user = await prisma.customers.findMany({
+      where: { userId }
+    })
+    return user
   }
 }

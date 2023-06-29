@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -29,7 +29,7 @@ model Products {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   nomeProduto String
-  preco       Int
+  preco       String
   descricao   String
   User        Users?   @relation(fields: [userId], references: [id])
   userId      Int?
@@ -40,17 +40,16 @@ model Products {
 }
 
 model Customers {
-  id             Int      @id @default(autoincrement())
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  nome           String
-  cpf            String   @unique
-  dataNascimento DateTime
-  endereco       String
-  email          String
-  telefone       String
-  User           Users?   @relation(fields: [userId], references: [id])
-  userId         Int?
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nome      String
+  cpf       String   @unique
+  endereco  String
+  email     String
+  telefone  String
+  User      Users?   @relation(fields: [userId], references: [id])
+  userId    Int?
 
   @@map("customers")
 }
@@ -60,7 +59,7 @@ model Sales {
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
   formaPagamento String
-  valorApagar    Int
+  valorApagar    String
   User           Users?     @relation(fields: [userId], references: [id])
   products       Products[]
   userId         Int?

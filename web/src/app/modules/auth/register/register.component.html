@@ -1,5 +1,9 @@
-<div class="bg">
-  <form [formGroup]="form" class="d-flex flex-column align-items-center gap-4 ">
+<div class="bg" >
+
+
+
+  <form *ngIf="!cadastrado" [formGroup]="form" (click)="cadastrar()" class="d-flex flex-column align-items-center gap-4 ">
+    <div class="erro" *ngIf="error">{{error}}</div>
     <h1 class="logo">logo</h1>
     <div class="d-flex flex-column gap-1  w-100">
       <div class="form-group mb-2">
@@ -25,4 +29,7 @@
     <button type="button" class="btn btn-primary w-100">Cadastre-se</button>
     <p>Já tem uma conta? <a routerLink="">Acesse-a agora!</a></p>
   </form>
+  <div *ngIf="cadastrado">
+    <h1>Sua conta foi criada com sucesso.</h1>
+  </div>
 </div>

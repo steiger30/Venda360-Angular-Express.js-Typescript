@@ -1,11 +1,9 @@
 import ValidatorRules from '../shared/validators/validator-rules';
-import { Customer } from './customer';
-import { Product } from './product';
 
 export type SalesProperties = {
   id?: number,
   formaPagamento: string,
-  valorApagar: number,
+  valorApagar: string,
   customersId: number;
   products: number[];
   userId: number;

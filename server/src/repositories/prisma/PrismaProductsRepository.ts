@@ -30,4 +30,10 @@ export class PrismaProductsRepository {
     })
     return { message: "Removido com sucesso" }
   }
+  async getall(userId: number) {
+    const user = await prisma.products.findMany({
+      where: { userId }
+    })
+    return user
+  }
 }

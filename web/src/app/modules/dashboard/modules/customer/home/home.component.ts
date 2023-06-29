@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from 'src/app/core/services/api.service';
 import { ConfirmationComponent } from 'src/app/shared/modal/confirmation/confirmation.component';
 
 @Component({
@@ -8,25 +9,31 @@ import { ConfirmationComponent } from 'src/app/shared/modal/confirmation/confirm
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  public customers: any[] = [
-    { id:32, nome: 'Renan Steiger', cpf: '05831228924', email: "renansteiger@live.com", telefone:'456456498', dataNascimento: "484894",endereco:"centro do centro" },
-    { id: 2, nome: 'Renan Steiger', cpf: '05831228924', email: "renansteiger@live.com", telefone:'456456498', dataNascimento: "484894",endereco:"centro do centro" },
-
-  ];
-  constructor(private router: Router, private modalService: NgbModal) {
+export class HomeComponent implements OnInit {
+  public customers!: any[]
+  constructor(private router: Router, private modalService: NgbModal, private apiService: ApiService) {
 
   }
-
+  ngOnInit(): void {
+    this.populaTable()
+  }
+  populaTable() {
+    this.apiService.getV2('/cliente').subscribe(data => {
+      this.customers = data
+    })
+  }
   goToDetalhesByState(customer: any) {
-    this.router.navigateByUrl('/dashboard-admin/clientes/editar-cliente', {
+    this.router.navigateByUrl('/dashboard/clientes/editar-cliente', {
       state: customer
     })
   }
   async deleteProduct(customer: any) {
     const confirmationModal = await this.openModal()
     if (confirmationModal) {
-      console.log('foi')
+      this.apiService.delete(`/cliente/${customer.id}`).subscribe(
+        res => this.populaTable(),
+        err => console.log(err)
+      )
     }
   }
   async openModal(): Promise<boolean> {

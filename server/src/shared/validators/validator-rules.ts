@@ -11,41 +11,43 @@ export default class ValidatorRules {
 
   required(): this {
     if (this.value === null || this.value === undefined || this.value === "") {
-      throw new ValidationError(`The ${this.property} is requider`);
+      throw new ValidationError(`O campo ${ this.property } é obrigatório`);
     }
-    return this
+    return this;
   }
 
   string(): this {
     if (typeof this.value !== "string") {
-      throw new ValidationError(`The ${this.property} must be a string`)
+      throw new ValidationError(`O campo ${ this.property } deve ser uma string`);
     }
-    return this
+    return this;
   }
 
   number(): this {
     if (typeof this.value !== "number") {
-      throw new ValidationError(`The ${this.property} must be a number`)
+      throw new ValidationError(`O campo ${ this.property } deve ser um número`);
     }
-    return this
+    return this;
   }
 
   maxLength(max: number): this {
     if (this.value.length === max) {
-      throw new ValidationError(`The ${this.property} must be less or equal than ${max} characters`)
+      throw new ValidationError(`O campo ${this.property} deve ter no máximo ${max} caracteres`);
     }
-    return this
+    return this;
   }
+
   minLength(min: number): this {
     if (this.value.length < min) {
-      throw new ValidationError(`O ${this.property} deve ser maior ou igual a ${min} characters`)
+      throw new ValidationError(`O campo ${this.property} deve ter no mínimo ${min} caracteres`);
     }
-    return this
+    return this;
   }
+
   cpf(): this {
     if (!validateCPF(this.value)) {
-      throw new ValidationError(`O CPF é inválido`)
+      throw new ValidationError("CPF inválido");
     }
-    return this
+    return this;
   }
 }
