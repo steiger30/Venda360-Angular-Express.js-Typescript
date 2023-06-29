@@ -4,7 +4,7 @@ export type CustomerProperties = {
   id?: number,
   nome: string,
   cpf: string,
-  dataNascimento: string,
+  dataNascimento: Date,
   endereco: string,
   email: string,
   telefone: string,

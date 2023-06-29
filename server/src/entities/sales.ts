@@ -4,10 +4,11 @@ import { Product } from './product';
 
 export type SalesProperties = {
   id?: number,
-  formaPamgento: string,
+  formaPagamento: string,
   valorApagar: number,
-  customer: Customer;
-  products: Product[];
+  customersId: number;
+  products: number[];
+  userId: number;
 }
 export class Sales {
 
@@ -15,9 +16,9 @@ export class Sales {
     this.validateProperties(props);
   }
   private validateProperties(props: SalesProperties) {
-    const { formaPamgento, valorApagar, customer, products } = props;
+    const { formaPagamento, valorApagar, customersId, products } = props;
 
-    ValidatorRules.values(formaPamgento, "forma Pamgento")
+    ValidatorRules.values(formaPagamento, "forma Pamgento")
       .required()
       .string();
 
@@ -25,7 +26,7 @@ export class Sales {
       .required()
       .number();
 
-    ValidatorRules.values(customer, "customer")
+    ValidatorRules.values(customersId, "customer")
       .required()
 
     ValidatorRules.values(products, "produtos")

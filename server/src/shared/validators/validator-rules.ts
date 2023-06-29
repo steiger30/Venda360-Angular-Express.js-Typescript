@@ -36,6 +36,12 @@ export default class ValidatorRules {
     }
     return this
   }
+  minLength(min: number): this {
+    if (this.value.length < min) {
+      throw new ValidationError(`O ${this.property} deve ser maior ou igual a ${min} characters`)
+    }
+    return this
+  }
   cpf(): this {
     if (!validateCPF(this.value)) {
       throw new ValidationError(`O CPF é inválido`)
