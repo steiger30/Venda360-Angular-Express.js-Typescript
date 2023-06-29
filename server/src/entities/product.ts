@@ -4,7 +4,7 @@ export type ProductProperties = {
   id?: number,
   nomeProduto: string,
   preco: number,
-  descricao?: string,
+  descricao: string,
 }
 
 export class Product {
