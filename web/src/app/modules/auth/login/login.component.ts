@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form = this.fb.group({
-    email: ["renansteiger@live.com", [Validators.required, Validators.email]],
-    password: ["060891aa", [Validators.required, Validators.minLength(8)]]
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", [Validators.required, Validators.minLength(8)]]
   })
   constructor(private fb: NonNullableFormBuilder, private authService: AuthService, private router: Router) { }
   error!: string
