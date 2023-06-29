@@ -1,5 +1,6 @@
 <div class="bg">
-  <form [formGroup]="form" action="" class="d-flex flex-column align-items-center gap-4 ">
+  <form [formGroup]="form" (ngSubmit)="login()" class="d-flex flex-column align-items-center gap-4 ">
+    <div class="erro" *ngIf="error">{{error}}</div>
     <h1 class="logo">logo</h1>
     <div class="d-flex flex-column gap-1 w-100">
       <div class="form-group mb-2">
@@ -19,7 +20,6 @@
     </div>
     <button type="submit" class="btn btn-primary w-100">Fazer login</button>
     <div class="d-flex flex-column align-items-center">
-      <p>ou <a class="recover" routerLink="recuperar-senha">Esqueci a senha</a></p>
       <p>Não possui uma conta? <a routerLink="cadastrar">Criar Conta</a></p>
     </div>
   </form>

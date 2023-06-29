@@ -1,4 +1,5 @@
-<form [formGroup]="form" class="form">
+<form *ngIf="!cadastrado" [formGroup]="form" (submit)="submitForm()" class="form">
+  <div class="erro" *ngIf="error">{{error}}</div>
   <div class="form-group">
     <label>Nome</label>
     <input type="text" class="input" formControlName="nome">
@@ -8,24 +9,14 @@
 
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <label>CPF</label>
-      <input type="text" class="input" formControlName="cpf">
-      <div *ngIf="form.get('cpf')?.errors && form.get('cpf')?.touched">
-        <span class="text-danger" *ngIf="form.get('cpf')?.errors?.['required']">CPF é
-          obrigatório.</span>
 
-      </div>
-    </div>
-    <div class="form-group col-md-6">
-      <label>Data Nascimento</label>
-      <input type="text" class="input" formControlName="dataNascimento">
-      <div *ngIf="form.get('dataNascimento')?.errors && form.get('dataNascimento')?.touched">
-        <span class="text-danger">Data nasicmento
-          obrigatório.</span>
+  <div class="form-group">
+    <label>CPF</label>
+    <input type="text" class="input" formControlName="cpf">
+    <div *ngIf="form.get('cpf')?.errors && form.get('cpf')?.touched">
+      <span class="text-danger" *ngIf="form.get('cpf')?.errors?.['required']">CPF é
+        obrigatório.</span>
 
-      </div>
     </div>
   </div>
   <div class="form-group">
@@ -59,5 +50,8 @@
   </div>
 
   <button type="submit" class="btn btn-primary mr-btn">Salvar</button>
-  <button routerLink="/dashboard-admin/clientes" type="button" class="btn btn-secondary">Voltar</button>
+  <button routerLink="/dashboard/clientes" type="button" class="btn btn-secondary">Voltar</button>
 </form>
+<div *ngIf="cadastrado">
+  <h1>{{messagemSucesso}}</h1>
+</div>
