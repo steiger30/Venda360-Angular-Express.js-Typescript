@@ -1,11 +1,11 @@
 import { Product, ProductProperties } from "../../entities/product";
-import { PrismaProductsRepository } from "../../repositories/prisma/PrismaProductsRepository";
+import { IProductsRepository } from "../../repositories/IProductsRepository";
 
 export class CreateProducts {
-  async execute(req: ProductProperties, userId: number) {
+  constructor(private iProductsRepository: IProductsRepository){}
+  async execute(req: ProductProperties, userId: string) {
 
     const product = new Product(req);
-    const prismaProductsRepository = new PrismaProductsRepository();
-    return prismaProductsRepository.create(product.props, userId)
+    return this.iProductsRepository.create(product.props, userId)
   }
 }

@@ -1,12 +1,15 @@
 import ValidatorRules from "../shared/validators/validator-rules";
 
 export type CustomerProperties = {
-  id?: number,
+  id?: string,
   nome: string,
   cpf: string,
   endereco: string,
   email: string,
   telefone: string,
+  createdAt?: Date,
+  updatedAt?: Date,
+  userId?: string
 }
 
 export class Customer {

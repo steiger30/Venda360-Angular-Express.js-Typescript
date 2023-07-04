@@ -1,7 +1,7 @@
 import ValidatorRules from '../shared/validators/validator-rules';
 
 export type UserProperties = {
-  id?: number,
+  id?: string,
   fullName: string,
   email: string,
   password: string;

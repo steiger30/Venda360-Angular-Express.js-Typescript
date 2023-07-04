@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from "path";
 import nodemailer, { Transporter } from 'nodemailer';
+import sequelize from "./config/db";
+import dotenv from 'dotenv';
+
 const port: number = 3000;
 const transporter = nodemailer.createTransport({
   service: 'hotmail',
@@ -20,6 +23,15 @@ const options: cors.CorsOptions = {
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+dotenv.config();
+sequelize.sync().then(() => {
+  console.log('Database connected');
+}).catch((error) => {
+  console.log('Error connecting to database:', error);
+});
+
+
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static(path.join(__dirname, '../public')));
@@ -37,6 +49,7 @@ app.get('/desenvolvedor', (req, res) => {
 app.get('/contato', (req, res) => {
   res.render('contato');
 });
+
 app.post('/enviar-email', (req, res) => {
   const { nome, email, assunto, mensagem } = req.body;
   console.log(nome, email, assunto, mensagem)

@@ -3,7 +3,7 @@ import { Sales, SalesProperties } from "../entities/sales";
 import { CreateSales } from "../useCase/sales/CreateSales";
 
 interface AuthenticatedRequest extends Request {
-  userid?: number;
+  userid?: string;
 }
 
 const salesRoutes = Router();

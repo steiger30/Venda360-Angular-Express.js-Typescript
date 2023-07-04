@@ -1,19 +1,20 @@
-import { PrismaUserRepostiory } from "../../repositories/prisma/PrismaUserRepostiory"
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { AuthUserProperties } from "../../shared/dto/authUserProperties"
 import { sign } from 'jsonwebtoken';
 
 export class AuthUser {
-  constructor() { }
+  constructor(private iUsersRepository: IUsersRepository) { }
   async execute(req: AuthUserProperties) {
-    const prismaUserRepostiory = new PrismaUserRepostiory()
-    const isValidUser = await prismaUserRepostiory.isValidLogin(req)
-    const chaveSecreta = process.env.SECRET;
+
+    const isValidUser = await this.iUsersRepository.isValidLogin(req)
+    const chaveSecreta =  process.env.SECRET;
 
     if (!chaveSecreta) {
       throw new Error('Chave secreta não encontrada');
     }
     
-    const payload = { id: isValidUser.id, nome: isValidUser.name, email: isValidUser.email };
+    const payload = { id: isValidUser.id, nome: isValidUser.nome, email: isValidUser.email };
+    console.log(payload)
 
     const token = sign(payload, chaveSecreta, { expiresIn: "6d" });
     
