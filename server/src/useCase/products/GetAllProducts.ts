@@ -1,11 +1,8 @@
 import { IProductsRepository } from "../../repositories/IProductsRepository";
 
-export class DeleteProducts {
-
+export class GetProducts {
   constructor(private iProductsRepository: IProductsRepository){}
+  async execute() {
 
-  async execute(id: string) {
-
-    return this.iProductsRepository.delete(id)
   }
 }

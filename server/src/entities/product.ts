@@ -1,10 +1,13 @@
 import ValidatorRules from "../shared/validators/validator-rules";
 
 export type ProductProperties = {
-  id?: number,
+  id?: string,
   nomeProduto: string,
   preco: string,
   descricao: string,
+  createdAt?: Date;
+  updatedAt?: Date;
+  userId?: string
 }
 
 export class Product {
@@ -29,6 +32,6 @@ export class Product {
     ValidatorRules.values(descricao, "descricao")
       .required()
       .string();
-    
+
   }
 }

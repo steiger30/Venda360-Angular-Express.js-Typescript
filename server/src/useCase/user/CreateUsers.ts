@@ -1,13 +1,12 @@
 import { User, UserProperties } from "../../entities/user";
-import { PrismaUserRepostiory } from "../../repositories/prisma/PrismaUserRepostiory";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 
 export class CreateUsers {
-  constructor() { }
+  constructor(private iUsersRepository: IUsersRepository) { }
   async execute(req: UserProperties) {
     const user = new User(req);
-    const prismaUserRepostiory = new PrismaUserRepostiory()
-    const createdUser = await prismaUserRepostiory.create(user.props)
-    return createdUser
+    return this.iUsersRepository.create(user.props)
+
   }
 }

@@ -1,10 +1,12 @@
 import { Customer, CustomerProperties } from "../../entities/customer";
-import { PrismaCustomersRepository } from "../../repositories/prisma/PrismaCustomersRepository";
+import { ICustomersRepository } from "../../repositories/ICustomersRepository";
 
 export class UpdateCustomers {
-  async execute(req: CustomerProperties, userId: number) {
+  constructor(private iCustomersRepository: ICustomersRepository) { }
+
+  async execute(req: CustomerProperties, userId: string) {
     const customer = new Customer(req);
-    const prismaCustomersRepository = new PrismaCustomersRepository()
-    return prismaCustomersRepository.update(customer.props, userId)
+
+    return this.iCustomersRepository.update(customer.props, userId)
   }
 }

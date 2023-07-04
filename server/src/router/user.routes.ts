@@ -1,38 +1,41 @@
 import { Request, Response, Router } from "express";
 import { User, UserProperties } from "../entities/user";
 import { CreateUsers } from "../useCase/user/CreateUsers";
-import { PrismaUserRepostiory } from "../repositories/prisma/PrismaUserRepostiory";
+
 import { DeleteUsers } from "../useCase/user/DeleteUser";
 import { AuthUser } from "../useCase/user/AuthUser";
 import { authenticate } from "../middlewares/authenticate";
+import { SequelizeUsersRepostiory } from "../repositories/sequelize/SequelizeUsersRepostiory";
 
 interface AuthenticatedRequest extends Request {
-  userid?: number;
+  userid?: string;
 }
 
 
 const userRoutes = Router();
 
 userRoutes.post("/", async (req: Request, res: Response) => {
-  try {
-    const createdUser = new CreateUsers()
-    const user = await createdUser.execute(req.body)
-    return res.json(user);
-  } catch (error: any) {
+
+  const usersRepostiory = new SequelizeUsersRepostiory()
+  const createdUser = new CreateUsers(usersRepostiory)
+  createdUser.execute(req.body).then((response) => {
+    return res.json(response);
+  }).catch((error: any) => {
     return res.status(400).json({ error: error.message });
-  }
+  })
+
 
 })
 
 userRoutes.post("/auth", async (req: Request, res: Response) => {
-  try {
-    const authUser = new AuthUser()
-    const isValidLoginToken = await authUser.execute(req.body)
-    return res.json(isValidLoginToken);
-  } catch (error: any) {
-    return res.status(400).json({ error: error.message });
-  }
 
+  const usersRepostiory = new SequelizeUsersRepostiory()
+  const authUser = new AuthUser(usersRepostiory)
+  authUser.execute(req.body).then((response) => {
+    return res.json(response);
+  }).catch((error: any) => {
+    return res.status(400).json({ error: error.message });
+  })
 })
 
 userRoutes.delete("/", authenticate, async (req: AuthenticatedRequest, res: Response) => {
@@ -40,9 +43,9 @@ userRoutes.delete("/", authenticate, async (req: AuthenticatedRequest, res: Resp
   if (!userId) {
     throw ("Is not userId")
   }
-  const prismaUserRepostiory = new PrismaUserRepostiory()
-  const ExluiUser = await prismaUserRepostiory.delete(userId)
-  return ExluiUser
+  const usersRepostiory = new SequelizeUsersRepostiory()
+  const deletUser = await usersRepostiory.delete(userId)
+  return deletUser
 })
 
 
