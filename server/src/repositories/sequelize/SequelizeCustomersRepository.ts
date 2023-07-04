@@ -5,8 +5,6 @@ import customerModels from "../../models/customerModels";
 export class SequelizeCustomersRepository implements ICustomersRepository {
   async create(customer: CustomerProperties, userId: string) {
     const { nome, cpf, endereco, email, telefone } = customer
-    console.log("as", userId)
-    console.log("as", customer)
     try {
       await customerModels.create({
         nome, cpf, endereco, email, telefone, userId

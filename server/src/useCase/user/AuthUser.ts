@@ -14,7 +14,6 @@ export class AuthUser {
     }
     
     const payload = { id: isValidUser.id, nome: isValidUser.nome, email: isValidUser.email };
-    console.log(payload)
 
     const token = sign(payload, chaveSecreta, { expiresIn: "6d" });
     

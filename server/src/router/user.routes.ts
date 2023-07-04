@@ -48,6 +48,19 @@ userRoutes.delete("/", authenticate, async (req: AuthenticatedRequest, res: Resp
   return deletUser
 })
 
+userRoutes.get("/", authenticate, async (req: AuthenticatedRequest, res: Response) => {
+  const userId = req.userid;
+  if (!userId) {
+    throw ("Is not userId")
+  }
+  const usersRepostiory = new SequelizeUsersRepostiory()
+  usersRepostiory.get(userId).then((response) => {
+    return res.json(response);
+  }).catch((error: any) => {
+    return res.status(400).json({ error: error.message });
+  })
+})
+
 
 
 

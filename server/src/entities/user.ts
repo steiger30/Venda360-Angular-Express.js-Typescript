@@ -5,9 +5,9 @@ export type UserProperties = {
   fullName: string,
   email: string,
   password: string;
+  contAcesso: number;
 }
 export class User {
-
   constructor(readonly props: UserProperties) {
     this.validateProperties(props);
   }
@@ -28,5 +28,4 @@ export class User {
       .minLength(8);
 
   }
-
 }

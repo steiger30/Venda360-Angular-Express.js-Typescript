@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 export type UserAttributes = {
   id?: number,
   nome: string,
+  contAcesso: number,
   email: string,
   password: string;
   createdAt?: Date
@@ -19,6 +20,7 @@ class User extends Model<UserAttributes> {
   declare nome: string;
   declare email: string;
   declare password: string;
+  declare contAcesso: number;
 }
 
 
@@ -27,6 +29,10 @@ class User extends Model<UserAttributes> {
     type: DataTypes.UUIDV4,
     defaultValue: () => uuidv4(),
     primaryKey: true,
+  },
+  contAcesso: {
+    type: DataTypes.NUMBER,
+    allowNull: false,
   },
   nome: {
     type: DataTypes.STRING,

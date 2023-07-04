@@ -59,6 +59,7 @@ customerRoutes.delete("/:id", async (req: AuthenticatedRequest, res: Response) =
     return res.status(400).json({ error: error.message });
   })
 })
+
 customerRoutes.get("/", async (req: AuthenticatedRequest, res: Response) => {
   const userId = req.userid;
   if (!userId) {
@@ -75,9 +76,7 @@ customerRoutes.get("/", async (req: AuthenticatedRequest, res: Response) => {
   if (!offset) {
     offset = 1;
   }
-
-  console.log( "aqui ", pagLimit, pagOffset)
-
+  
   const customersRepository = new SequelizeCustomersRepository()
   customersRepository.getall(limit, offset, userId).then((response) => {
     return res.json(response);

@@ -5,14 +5,12 @@ import { IUsersRepository } from '../IUsersRepository';
 import usersModels from '../../models/usersModels';
 
 export class SequelizeUsersRepostiory implements IUsersRepository {
-
-
   async create(user: UserProperties): Promise<any> {
-    console.log(user)
     try {
       const password = await bcrypt.hash(user.password, 12);
       const savedUser = await usersModels.create({
         nome: user.fullName,
+        contAcesso: 0,
         email: user.email,
         password
       })
@@ -27,13 +25,19 @@ export class SequelizeUsersRepostiory implements IUsersRepository {
     const isValidUser = await usersModels.findOne({
       where: { email: user.email }
     })
+
     if (isValidUser === null) {
       throw new Error('Usuário não encontrado');
     }
+
     const validPassword = await compare(user.password, isValidUser.password);
     if (!validPassword) {
       throw new Error('Senha inválida');
     }
+    usersModels.update(
+      { contAcesso:  isValidUser.contAcesso + 1 },
+      { where: { id: isValidUser.id } }
+    )
     return isValidUser
   }
 
@@ -43,5 +47,13 @@ export class SequelizeUsersRepostiory implements IUsersRepository {
       where: { id }
     })
     return { message: "Removido com sucesso" }
+  }
+
+  async get(userId: string) {
+    const acesso = await usersModels.findOne({
+      attributes: ['contAcesso'],
+      where: { id: userId }
+    })
+    return acesso
   }
 } 
